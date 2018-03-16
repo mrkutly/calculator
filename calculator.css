@@ -1,7 +1,11 @@
+#display{
+  width: 50px;
+  margin: 0 auto;
+}
 #container{
   display: grid;
   grid-gap: 5px;
   grid-template-columns: auto auto auto auto;
   max-width: 360px;
   margin: 0 auto;
-}
+};
