@@ -1,5 +1,4 @@
 
-
 function add(a, b){
   answer = a + b;
   return answer;
@@ -36,6 +35,7 @@ function operate(a, b, operator){
   };
 };
 
+//*********BUGS A LOT************//
 const display = document.getElementById("display");
 
 for(i = 0; i < 10; i++){
@@ -44,33 +44,63 @@ for(i = 0; i < 10; i++){
     if(display.textContent === "+" || display.textContent === "-" ||
       display.textContent === "*" || display.textContent === "/"){
         operator = display.textContent;
-      }
-    display.textContent = event.target.id;
+        display.textContent = event.target.id;
+      } else {
+    display.textContent += event.target.id;
+  }
   });
 };
 
 const plus = document.getElementById("+");
 plus.addEventListener("click", function(event){
-  a = parseInt(display.textContent);
-  display.textContent = event.target.id;
+  if(typeof(a) != "undefined"){
+    b = parseInt(display.textContent);
+    display.textContent = operate(a, b, operator);
+    a = parseInt(display.textContent);
+    display.textContent = event.target.id;
+  } else {
+    a = parseInt(display.textContent);
+    display.textContent = event.target.id;
+  };
 });
 
 const minus = document.getElementById("-");
 minus.addEventListener("click", function(event){
+  if(typeof(a) != "undefined"){
+    b = parseInt(display.textContent);
+    display.textContent = operate(a, b, operator);
+    a = parseInt(display.textContent);
+    display.textContent = event.target.id;
+  } else {
   a = parseInt(display.textContent);
   display.textContent = event.target.id;
+  }
 });
 
 const times = document.getElementById("*");
 times.addEventListener("click", function(event){
+  if(typeof(a) != "undefined"){
+    b = parseInt(display.textContent);
+    display.textContent = operate(a, b, operator);
+    a = parseInt(display.textContent);
+    display.textContent = event.target.id;
+  } else {
   a = parseInt(display.textContent);
   display.textContent = event.target.id;
+  }
 });
 
 const dividedBy = document.getElementById("/");
 dividedBy.addEventListener("click", function(event){
+  if(typeof(a) != "undefined"){
+    b = parseInt(display.textContent);
+    display.textContent = operate(a, b, operator);
+    a = parseInt(display.textContent);
+    display.textContent = event.target.id;
+  } else {
   a = parseInt(display.textContent);
   display.textContent = event.target.id;
+  }
 });
 
 const equals = document.getElementById("equals");
@@ -78,3 +108,13 @@ equals.addEventListener("click", function(){
   var b = parseInt(display.textContent);
   display.textContent = operate(a, b, operator);
 });
+
+const clear = document.getElementById("clear");
+clear.addEventListener("click", function(){
+  display.textContent = "";
+})
+
+
+
+
+// maybe I should create a string that is an equation, slice it up by the spaces, then set those as parameters?
