@@ -20,7 +20,7 @@ function divide(a, b){
 };
 
 //A function that takes input and figures out which mathematic function to run//
-function operate(a, b, operator){
+function operate(operator, a, b){
   if(operator === "+"){
     add(a, b);
     return answer;
@@ -81,20 +81,23 @@ clear.addEventListener("click", function (event){
   display.textContent = "";
 });
 
-//gotta figure out how to make this "equals" function work with any length of array//
+//comparing the contiguous array indeces to keep track of currentAnswer.
+//Just like kadane's algorithm!!! learning is fun!!!
+
 equals.addEventListener("click", function()
 {
   var equationString = display.textContent;
   var equationArray = equationString.split(" ");
-  if(equationArray.length === 5)
+  var currentAnswer = parseInt(equationArray[0]);
+  for (i = 0; i < equationArray.length; i++)
   {
-    a = operate(parseInt(equationArray[0]), parseInt(equationArray[2]), equationArray[1]);
-    display.textContent = operate(a, parseInt(equationArray[4]), equationArray[3]);
+    if(i > 0 && i % 2 == 0)
+    {
+      newAnswer = operate(
+        equationArray[i - 1], currentAnswer, parseInt(equationArray[i])
+      );
+      currentAnswer = newAnswer;
+      display.textContent = currentAnswer;
+    }
   }
 });
-
-//                0    1   2   3   4
-//sample array = ["3","+","7","-","2"]
-//create loop where i is the indeces of the array and if it is divisible by 2,
-// it is an operator. assign the odd numbered indeces to a, b, etc. then run the
-//function

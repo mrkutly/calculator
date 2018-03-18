@@ -9,3 +9,10 @@ for (i = 0; i < equationArray.length; i++)
 {
   if(i = 0){
     equationArray[i] = a
+
+
+    if(equationArray.length === 5)
+    {
+      a = operate(parseInt(equationArray[0]), parseInt(equationArray[2]), equationArray[1]);
+      b = operate(a, parseInt(equationArray[4]), equationArray[3]);
+    }
