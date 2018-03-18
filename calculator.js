@@ -104,6 +104,10 @@ equals.addEventListener("click", function()
   var currentAnswer = Number(equationArray[0]);
   for (i = 0; i < equationArray.length; i++)
   {
+    if(Number(equationArray[i]) === 0 && equationArray[i-1] === "/"){
+      display.textContent = "Dividing by 0 will crash your computer, dummy";
+      break;
+    }
     if(i > 0 && i % 2 == 0)
     {
       newAnswer = operate(
