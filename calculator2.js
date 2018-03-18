@@ -19,6 +19,12 @@ function divide(a, b){
   return answer;
 };
 
+//A function to round my final answers to a certain decimal place:
+
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
 //A function that takes input and figures out which mathematic function to run//
 function operate(operator, a, b){
   if(operator === "+"){
@@ -66,7 +72,14 @@ plusButton.addEventListener("click", function (event){
 });
 
 minusButton.addEventListener("click", function (event){
-  display.textContent += " " + event.target.id + " ";
+  var str = display.textContent
+  if (str.charAt(str.length - 1) == " " || str == "")
+  {
+    display.textContent += event.target.id
+  } else
+  {
+    display.textContent += " " + event.target.id + " ";
+  }
 });
 
 timesButton.addEventListener("click", function (event){
@@ -88,16 +101,16 @@ equals.addEventListener("click", function()
 {
   var equationString = display.textContent;
   var equationArray = equationString.split(" ");
-  var currentAnswer = parseInt(equationArray[0]);
+  var currentAnswer = Number(equationArray[0]);
   for (i = 0; i < equationArray.length; i++)
   {
     if(i > 0 && i % 2 == 0)
     {
       newAnswer = operate(
-        equationArray[i - 1], currentAnswer, parseInt(equationArray[i])
+        equationArray[i - 1], currentAnswer, Number(equationArray[i])
       );
       currentAnswer = newAnswer;
-      display.textContent = currentAnswer;
+      display.textContent = round(currentAnswer, 5);
     }
   }
 });

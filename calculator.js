@@ -35,7 +35,6 @@ function operate(a, b, operator){
   };
 };
 
-//*********BUGS A LOT************//
 const display = document.getElementById("display");
 
 for(i = 0; i < 10; i++){
@@ -113,8 +112,3 @@ const clear = document.getElementById("clear");
 clear.addEventListener("click", function(){
   display.textContent = "";
 })
-
-
-
-
-// maybe I should create a string that is an equation, slice it up by the spaces, then set those as parameters?
